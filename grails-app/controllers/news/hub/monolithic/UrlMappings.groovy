@@ -10,6 +10,9 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
+
+        "/ping"(method: "get", controller: "HealthChecks", action: "ping")
+
         "500"(view:'/error')
         "404"(view:'/notFound')
     }
