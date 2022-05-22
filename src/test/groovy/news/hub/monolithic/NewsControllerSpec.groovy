@@ -6,6 +6,7 @@ import spock.lang.Specification
 class NewsControllerSpec extends Specification implements ControllerUnitTest<NewsController> {
 
     void "test index"() {
+        given:
         request.method = 'GET'
 
         when:
