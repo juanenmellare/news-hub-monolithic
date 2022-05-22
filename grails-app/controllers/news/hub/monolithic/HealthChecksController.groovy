@@ -4,7 +4,7 @@ import enums.HttpStatus
 
 class HealthChecksController {
 
-    void ping() {
+    def ping() {
         render status: HttpStatus.OK.code, text: 'pong!'
     }
 }
