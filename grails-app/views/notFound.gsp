@@ -1,9 +1,9 @@
 <!doctype html>
 <html>
     <head>
-        <title>News Hub | Page Not Found</title>
         <meta name="layout" content="main">
         <asset:stylesheet src="errors.css"/>
+        <title>Page Not Found</title>
     </head>
     <body>
         <div class="body__error">

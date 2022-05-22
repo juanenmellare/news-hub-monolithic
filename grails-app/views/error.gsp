@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>News Hub | Error</title>
+    <title>Unexpected Error</title>
     <meta name="layout" content="main">
     <asset:stylesheet src="errors.css"/>
 </head>
