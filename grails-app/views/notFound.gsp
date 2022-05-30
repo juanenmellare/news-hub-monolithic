@@ -6,7 +6,7 @@
         <title>Page Not Found</title>
     </head>
     <body>
-        <div class="body__error">
+        <div class="container--centered">
             <h1>Page Not Found</h1>
             <h1>${request.forwardURI}</h1>
         </div>

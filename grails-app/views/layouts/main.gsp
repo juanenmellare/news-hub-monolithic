@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
     <g:layoutTitle default="News Hub"/>
     </title>
@@ -21,7 +22,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark background__ub--primary">
     <div class="container-fluid">
-        <a class="navbar-brand logo" href="">
+        <a class="navbar-brand logo" href="/">
             <asset:image src="newspaper.svg" height="40" class="d-inline-block align-text-top logo__image"/>
             <span class="logo__span">Hub</span>
         </a>
@@ -31,8 +32,23 @@
         <div class="collapse navbar-collapse navbar__items" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link navbar__items__link active" aria-current="page" href="">Home</a>
+                    <a class="nav-link navbar__items__link" aria-current="page" href="/">News</a>
                 </li>
+                <g:if test="${session.userId}">
+                    <li class="nav-item">
+                        <g:link class="nav-link navbar__items__link" controller="users" action="logout">
+                            Logout
+                        </g:link>
+                    </li>
+                </g:if>
+                <g:else>
+                    <li class="nav-item">
+                        <a class="nav-link navbar__items__link" href="/signIn">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link navbar__items__link" href="/signup">Sign Up</a>
+                    </li>
+                </g:else>
             </ul>
         </div>
     </div>
@@ -43,10 +59,9 @@
 <footer class="footer background__ub--secondary">
     <span class="footer__text">News Hub | Monolithic</span>
 </footer>
-<script crossorigin="anonymous"
-        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js">
-</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 <asset:javascript src="application.js"/>
 </body>
 </html>
