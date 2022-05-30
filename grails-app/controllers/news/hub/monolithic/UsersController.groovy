@@ -8,11 +8,11 @@ class UsersController {
     UsersService usersService
 
     def signup() {
-        render view: "/users/signup"
+        render view: '/users/signup'
     }
 
     def signIn() {
-        render view: "/users/signIn"
+        render view: '/users/signIn'
     }
 
     def authenticate() {
@@ -24,15 +24,15 @@ class UsersController {
             throw new NotFoundApiException("user with email ${userSignInRequest.getEmail()}")
         }
 
-        session["userId"] = user.id
+        session['userId'] = user.id
 
-        redirect uri: "/"
+        redirect uri: '/'
     }
 
     def logout() {
         session.invalidate()
 
-        redirect uri: "/"
+        redirect uri: '/'
     }
 
     def save() {
@@ -42,6 +42,6 @@ class UsersController {
         final User userToSave = signUpSaveRequest.toUser()
         usersService.save(userToSave)
 
-        redirect uri: "/"
+        redirect uri: '/'
     }
 }
