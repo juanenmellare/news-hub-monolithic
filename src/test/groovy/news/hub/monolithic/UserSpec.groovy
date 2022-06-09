@@ -1,18 +1,20 @@
 package news.hub.monolithic
 
 import grails.testing.gorm.DomainUnitTest
+import mocks.domains.UserMockBuilder
 import spock.lang.Specification
 
 class UserSpec extends Specification implements DomainUnitTest<User> {
 
-    def setup() {
-    }
+    void "new user"() {
+        when:
+        final User user = new UserMockBuilder().build()
 
-    def cleanup() {
-    }
-
-    void "test something"() {
-        expect:"fix me"
-            true == false
+        then:
+        user.id != null
+        user.firstName != null
+        user.lastName != null
+        user.email != null
+        user.password != null
     }
 }

@@ -1,5 +1,6 @@
 package news.hub.monolithic
 
+import exceptions.EmailInUseBadRequestApiException
 import grails.gorm.transactions.Transactional
 
 @Transactional
@@ -9,10 +10,11 @@ class UsersService {
         return User.findByEmail(email)
     }
 
-    User save(User user) {
-        final User userWithEmail = this.findByEmail(user.email)
+    User save(User user) throws EmailInUseBadRequestApiException {
+        final String email = user.getEmail()
+        final User userWithEmail = this.findByEmail(email)
         if (userWithEmail) {
-            throw new RuntimeException("the email is already in use")
+            throw new EmailInUseBadRequestApiException(email)
         }
         final User userSaved = user.save()
         return userSaved
@@ -20,6 +22,6 @@ class UsersService {
 
     User getByEmailAndPassword(String email, String password) {
         final User user = this.findByEmail(email)
-        return password == user?.password ? user : null
+        return password == user?.getPassword() ? user : null
     }
 }

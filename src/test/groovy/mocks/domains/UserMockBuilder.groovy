@@ -5,6 +5,11 @@ import news.hub.monolithic.User
 class UserMockBuilder {
     User user = new User('Juan', 'Test', 'juan@test.com', '12345')
 
+    UserMockBuilder setId(id) {
+        this.user.setId(id)
+        return this
+    }
+
     UserMockBuilder setFirstName(firstName) {
         this.user.setFirstName(firstName)
         return this
