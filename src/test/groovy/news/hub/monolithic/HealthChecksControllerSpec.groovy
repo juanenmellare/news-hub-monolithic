@@ -15,6 +15,6 @@ class HealthChecksControllerSpec extends Specification implements ControllerUnit
 
         then:
         response.status == HttpStatus.OK.code
-        response.text == "pong!"
+        response.text == 'pong!'
     }
 }

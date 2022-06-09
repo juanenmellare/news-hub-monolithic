@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: space-between;
+    background-color: #333333;
 }
 
 .background__ub--primary {
@@ -11,6 +12,19 @@ body {
 }
 
 .background__ub--secondary {
+    background-color: #900126;
+}
+
+.card--border-primary-red {
+    border: 2px solid #900126;
+}
+
+.btn-primary {
+    background-color: #EE052B;
+    border-color: #900126 !important;
+}
+
+.btn-primary:hover {
     background-color: #900126;
 }
 
@@ -34,6 +48,24 @@ body {
 
 .navbar__items.show .navbar__items__link {
     padding-left: 20px;
+}
+
+.container--centered {
+    min-height: calc(100vh - 110px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card--narrow {
+    width: 375px;
+}
+
+@media only screen and (max-width: 374px) {
+    .card--narrow {
+        width: 100%;
+    }
 }
 
 .footer {

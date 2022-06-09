@@ -6,7 +6,7 @@
     <asset:stylesheet src="errors.css"/>
 </head>
 <body>
-<div class="body__error">
+<div class="container--centered">
     <g:if env="development">
         <g:if test="${Throwable.isInstance(exception)}">
             <g:renderException exception="${exception}" />
