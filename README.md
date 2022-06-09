@@ -26,3 +26,16 @@ Grails application running at http://localhost:8080 in environment: development
 <===========--> 85% EXECUTING [16s]
 > :bootRun
 ```
+<hr /> 
+
+## Run Tests
+
+Run all tests, with the following command:
+```console
+make run-tests
+```
+
+Run all tests with code coverage + report, with the following command:
+```console
+run-tests-coverage
+```
