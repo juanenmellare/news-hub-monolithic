@@ -12,7 +12,7 @@ A simple hub of news developed for academic purposes.
 - Install `sdkman` with https://sdkman.io/install guide.
 - Install Java 8, execute `sdk install java 8.0.332-zulu` in console.
 - Install Grails 5.1.3, execute `sdk install grails 5.1.3` in console.
-- Install Grails 5.1.3, execute `sdk install gradle 7.4.2` in console.
+- Install Gradle 7.4.2, execute `sdk install gradle 7.4.2` in console.
 <hr /> 
 
 ## Run Application
@@ -37,5 +37,5 @@ make run-tests
 
 Run all tests with code coverage + report, with the following command:
 ```console
-run-tests-coverage
+make run-tests-coverage
 ```
