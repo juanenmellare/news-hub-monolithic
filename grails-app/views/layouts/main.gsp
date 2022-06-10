@@ -20,7 +20,7 @@
     <asset:stylesheet src="application.css"/>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark background__ub--primary">
+<nav class="navbar navbar-expand-lg navbar-dark background__ub--primary fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand logo" href="/">
             <asset:image src="newspaper.svg" height="40" class="d-inline-block align-text-top logo__image"/>
@@ -53,7 +53,7 @@
         </div>
     </div>
 </nav>
-<div class="container">
+<div class="container container-body">
     <g:layoutBody/>
 </div>
 <footer class="footer background__ub--secondary">
@@ -61,6 +61,9 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
+        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D"
         crossorigin="anonymous"></script>
 <asset:javascript src="application.js"/>
 </body>

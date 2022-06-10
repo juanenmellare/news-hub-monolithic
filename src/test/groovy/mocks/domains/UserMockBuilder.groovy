@@ -5,27 +5,27 @@ import news.hub.monolithic.User
 class UserMockBuilder {
     User user = new User('Juan', 'Test', 'juan@test.com', '12345')
 
-    UserMockBuilder setId(id) {
+    UserMockBuilder setId(String id) {
         this.user.setId(id)
         return this
     }
 
-    UserMockBuilder setFirstName(firstName) {
+    UserMockBuilder setFirstName(String firstName) {
         this.user.setFirstName(firstName)
         return this
     }
 
-    UserMockBuilder setLastName(lastName) {
+    UserMockBuilder setLastName(String lastName) {
         this.user.setLastName(lastName)
         return this
     }
 
-    UserMockBuilder setEmail(email) {
+    UserMockBuilder setEmail(String email) {
         this.user.setEmail(email)
         return this
     }
 
-    UserMockBuilder setPassword(password) {
+    UserMockBuilder setPassword(String password) {
         this.user.setPassword(password)
         return this
     }
