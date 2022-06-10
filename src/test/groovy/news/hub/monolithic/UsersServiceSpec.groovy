@@ -1,7 +1,6 @@
 package news.hub.monolithic
 
 import exceptions.EmailInUseBadRequestApiException
-import exceptions.EmptyFieldsBadRequestApiException
 import grails.testing.gorm.DataTest
 import grails.testing.services.ServiceUnitTest
 import mocks.domains.UserMockBuilder
