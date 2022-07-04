@@ -1,17 +1,19 @@
 package news.hub.monolithic
 
+
 class User {
     String id = UUID.randomUUID().toString()
-    Date dateCreated
-    Date lastUpdated
     String firstName
     String lastName
     String email
     String password
 
+    static mapping = {
+        table "users"
+    }
+
     static constraints = {
         id generator:'assigned'
-        // email unique:'email_idx'
     }
 
     User(String firstName, String lastName, String email, String password) {
