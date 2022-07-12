@@ -12,6 +12,12 @@ class News {
     String url
     Instant publishedAt
 
+    static hasMany = [readers: User]
+
+    static mapping = {
+        readers joinTable: [name: "news_readers", key: "news_id"]
+    }
+
     static constraints = {
         id generator:'assigned'
     }

@@ -2,7 +2,9 @@ package enums
 
 enum HttpStatus {
     OK(200, "ok"),
+    ACCEPTED(202, "accepted"),
     BAD_REQUEST(400, "bad request"),
+    UNAUTHORIZED(401, "unauthorized"),
     NOT_FOUND(404, "not found")
 
 
@@ -16,9 +18,5 @@ enum HttpStatus {
 
     int getCode() {
         this.code
-    }
-
-    String getStatus() {
-        this.status
     }
 }

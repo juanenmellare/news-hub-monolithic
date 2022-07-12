@@ -2,6 +2,8 @@ package mocks.domains
 
 import enums.NewsChannel
 import news.hub.monolithic.News
+import news.hub.monolithic.User
+import responses.NewsResponse
 
 import java.time.Instant
 
@@ -38,8 +40,18 @@ class NewsMockBuilder {
         return this
     }
 
+    NewsMockBuilder addReader(User user) {
+        this.news.readers = [user]
+        return this
+    }
+
     NewsMockBuilder clear() {
         this.news = new News()
+        return this
+    }
+
+    NewsMockBuilder save() {
+        this.news.save(flush: true, failOnError: true)
         return this
     }
 
