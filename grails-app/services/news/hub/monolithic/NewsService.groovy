@@ -9,6 +9,10 @@ import groovyx.gpars.GParsPool
 @Service
 class NewsService {
 
+    News findById(String id) {
+        News.findById(id)
+    }
+
     List<News> getLastNewsFromChannels() {
         final List<News> news = new ArrayList<News>()
 
@@ -33,9 +37,16 @@ class NewsService {
     }
 
     List<News> listAll() {
-        this.fetchAndSave()
         final List<News> news = News.findAll().sort { a, b -> b.publishedAt <=> a.publishedAt }
 
         return news
+    }
+
+    @Transactional
+    void addReader(News news, User user) {
+        if (!(user in news.readers)) {
+            news.addToReaders(user)
+            news.save()
+        }
     }
 }

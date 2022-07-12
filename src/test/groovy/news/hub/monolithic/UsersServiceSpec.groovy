@@ -12,10 +12,31 @@ class UsersServiceSpec extends Specification implements ServiceUnitTest<UsersSer
         return [User] as Class[]
     }
 
-    void "test findByEmail, founded"() {
+    void "test findById, founded"() {
+        given:
+        final User userExpected = new UserMockBuilder().save().build()
+
+        when:
+        final User userFounded = service.findById(userExpected.getId())
+
+        then:
+        userFounded == userExpected
+    }
+
+    void "test findById, not founded"() {
         given:
         final User userExpected = new UserMockBuilder().build()
-        userExpected.save()
+
+        when:
+        final User userFounded = service.findById(userExpected.getId())
+
+        then:
+        userFounded == null
+    }
+
+    void "test findByEmail, founded"() {
+        given:
+        final User userExpected = new UserMockBuilder().save().build()
 
         when:
         final User userFounded = service.findByEmail(userExpected.getEmail())
@@ -63,8 +84,7 @@ class UsersServiceSpec extends Specification implements ServiceUnitTest<UsersSer
 
     void "test getByEmailAndPassword, founded"() {
         given:
-        final User userExpected = new UserMockBuilder().build()
-        userExpected.save()
+        final User userExpected = new UserMockBuilder().save().build()
 
         when:
         final User userFounded =

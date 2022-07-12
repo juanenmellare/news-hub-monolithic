@@ -10,6 +10,11 @@ class UserMockBuilder {
         return this
     }
 
+    UserMockBuilder setRandomId() {
+        return this.setId(UUID.randomUUID().toString())
+    }
+
+
     UserMockBuilder setFirstName(String firstName) {
         this.user.setFirstName(firstName)
         return this
@@ -32,6 +37,11 @@ class UserMockBuilder {
 
     UserMockBuilder clear() {
         this.user = new User()
+        return this
+    }
+
+    UserMockBuilder save() {
+        this.user.save(flush: true, failOnError: true)
         return this
     }
 

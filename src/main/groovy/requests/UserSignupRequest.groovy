@@ -11,11 +11,11 @@ class UserSignupRequest extends GenericRequest {
     private String passwordRepeated
 
     UserSignupRequest(def params) {
-        this.firstName = params?.firstName
-        this.lastName = params?.lastName
-        this.email = params?.email
-        this.password = params?.password
-        this.passwordRepeated = params?.passwordRepeated
+        this.firstName = params.firstName
+        this.lastName = params.lastName
+        this.email = params.email
+        this.password = params.password
+        this.passwordRepeated = params.passwordRepeated
     }
 
     @Override

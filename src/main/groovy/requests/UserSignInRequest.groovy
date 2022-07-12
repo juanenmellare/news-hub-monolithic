@@ -5,8 +5,8 @@ class UserSignInRequest extends GenericRequest {
     private String password
 
     UserSignInRequest(def params) {
-        this.email = params?.email
-        this.password = params?.password
+        this.email = params.email
+        this.password = params.password
     }
 
     @Override

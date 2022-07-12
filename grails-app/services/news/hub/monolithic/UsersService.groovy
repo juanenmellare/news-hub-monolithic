@@ -6,6 +6,10 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class UsersService {
 
+    User findById(String id) {
+        return User.findById(id)
+    }
+
     User findByEmail(String email) {
         return User.findByEmail(email)
     }
