@@ -2,6 +2,7 @@ package news.hub.monolithic
 
 import exceptions.EmailInUseBadRequestApiException
 import grails.gorm.transactions.Transactional
+import utils.PasswordUtils
 
 @Transactional
 class UsersService {
@@ -26,6 +27,11 @@ class UsersService {
 
     User getByEmailAndPassword(String email, String password) {
         final User user = this.findByEmail(email)
-        return password == user?.getPassword() ? user : null
+        if (!user) {
+            return null
+        }
+
+        final boolean isPasswordOk = PasswordUtils.verifyPassword(password, user.getPassword(), user.getSalt())
+        return isPasswordOk ? user : null
     }
 }

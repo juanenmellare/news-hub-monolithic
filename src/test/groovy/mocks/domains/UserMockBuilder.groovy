@@ -3,7 +3,9 @@ package mocks.domains
 import news.hub.monolithic.User
 
 class UserMockBuilder {
-    User user = new User('Juan', 'Test', 'juan@test.com', '12345')
+    private String rawPassword = '12345'
+
+    User user = new User('Juan', 'Test', 'juan@test.com', rawPassword)
 
     UserMockBuilder setId(String id) {
         this.user.setId(id)
@@ -31,8 +33,12 @@ class UserMockBuilder {
     }
 
     UserMockBuilder setPassword(String password) {
-        this.user.setPassword(password)
+        this.rawPassword = password
         return this
+    }
+
+    String getRawPassword() {
+        return this.rawPassword
     }
 
     UserMockBuilder clear() {

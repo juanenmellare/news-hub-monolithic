@@ -1,12 +1,15 @@
 package news.hub.monolithic
 
+import utils.PasswordUtils
+
 
 class User {
     String id = UUID.randomUUID().toString()
     String firstName
     String lastName
     String email
-    String password
+    private String salt
+    private String password
 
     static mapping = {
         table "users"
@@ -20,6 +23,15 @@ class User {
         this.firstName = firstName
         this.lastName = lastName
         this.email = email
-        this.password = password
+        this.salt = PasswordUtils.generateSalt()
+        this.password = PasswordUtils.hashPassword(password, this.salt)
+    }
+
+    String getSalt() {
+        return this.salt
+    }
+
+    String getPassword() {
+        return this.password
     }
 }
