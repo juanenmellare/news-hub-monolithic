@@ -23,9 +23,7 @@ class NewsController {
 
     def read() {
         final String userId = SessionUtils.getUserId(session)
-        if (!userId) {
-            render status: HttpStatus.ACCEPTED.code
-        } else {
+        if (userId) {
             final User user = findUserOrThrowNotFound(userId)
 
             final String newsId = params.id
@@ -35,9 +33,8 @@ class NewsController {
             }
 
             this.newsService.addReader(news, user)
-
-            redirect uri: '/'
         }
+        redirect uri: '/'
     }
 
     private User findUserOrThrowNotFound(String userId) throws BadRequestApiException {

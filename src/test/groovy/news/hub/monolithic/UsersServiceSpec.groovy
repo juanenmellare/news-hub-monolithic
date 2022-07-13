@@ -84,11 +84,12 @@ class UsersServiceSpec extends Specification implements ServiceUnitTest<UsersSer
 
     void "test getByEmailAndPassword, founded"() {
         given:
-        final User userExpected = new UserMockBuilder().save().build()
+        final UserMockBuilder userMockBuilder = new UserMockBuilder()
+        final User userExpected = userMockBuilder.save().build()
 
         when:
         final User userFounded =
-                service.getByEmailAndPassword(userExpected.getEmail(), userExpected.getPassword())
+                service.getByEmailAndPassword(userExpected.getEmail(), userMockBuilder.getRawPassword())
 
         then:
         userFounded == userExpected
