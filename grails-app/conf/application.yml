@@ -122,4 +122,4 @@ environments:
     production:
         dataSource:
             dbCreate: "create"
-            url: ${DATABASE_URL}
+            url: ${DATABASE_URL_JDBC}
