@@ -17,6 +17,10 @@ enum HttpStatus {
     }
 
     int getCode() {
-        this.code
+        return this.code
+    }
+
+    String getStatus() {
+        return this.status
     }
 }

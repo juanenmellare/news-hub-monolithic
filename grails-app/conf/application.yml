@@ -113,7 +113,7 @@ environments:
     development:
         dataSource:
             url: jdbc:postgresql://localhost:5432/development.news-hub
-            dbCreate: "create"
+            dbCreate: "update"
             logSql: true
     test:
         dataSource:

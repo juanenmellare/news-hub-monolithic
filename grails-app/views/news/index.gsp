@@ -11,9 +11,7 @@
     <g:each in="${newsList}">
         <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3 card-news">
             <div class="card border-danger">
-                <a href="${it.url}" target="_blank">
-                    <a onClick="openNewsInTab('${it.url}')"
-                       href=<g:createLink controller="news" action="read" params="[id: it.id]"/>>
+                <a onClick="readNews(${it.isRead}, '${it.id}', '${it.url}')">
                         <g:if test="${it.isRead}">
                             <i class="card-news-icon-read bi bi-eyeglasses"></i>
                         </g:if>
@@ -31,6 +29,9 @@
         </div>
     </g:each>
 </div>
+<g:javascript>
+    const isLogged = !!"${session.userId}" || false;
+</g:javascript>
 <asset:javascript src="news.js"/>
 </body>
 </html>
