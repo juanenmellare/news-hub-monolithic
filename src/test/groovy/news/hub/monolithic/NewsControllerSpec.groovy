@@ -1,5 +1,6 @@
 package news.hub.monolithic
 
+import enums.HttpStatus
 import exceptions.BadRequestApiException
 import grails.testing.web.controllers.ControllerUnitTest
 import mocks.domains.NewsMockBuilder
@@ -84,7 +85,7 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.read()
 
         then:
-        response.redirectUrl == '/'
+        thrown(BadRequestApiException)
     }
 
     void "test read, with not persisted news"() {
@@ -130,6 +131,6 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         then:
         1 * controller.usersService.findById(userId) >> user
         1 * controller.newsService.findById(newsId) >> news
-        response.redirectUrl == '/'
+        response.status == HttpStatus.ACCEPTED.getCode()
     }
 }
