@@ -3,7 +3,7 @@ package news.hub.monolithic
 import exceptions.NotFoundApiException
 import requests.UserSignInRequest
 import requests.UserSignupRequest
-import utils.SessionUtil
+import utils.SessionUtils
 
 class UsersController {
     UsersService usersService
@@ -25,7 +25,7 @@ class UsersController {
             throw new NotFoundApiException("user with email ${userSignInRequest.getEmail()}")
         }
 
-        SessionUtil.setUserId(session, user.id)
+        SessionUtils.setUserId(session, user.id)
 
         redirect uri: '/'
     }

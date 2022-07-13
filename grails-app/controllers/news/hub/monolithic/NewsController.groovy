@@ -4,14 +4,14 @@ import enums.HttpStatus
 import exceptions.BadRequestApiException
 
 import responses.NewsListResponse
-import utils.SessionUtil
+import utils.SessionUtils
 
 class NewsController {
     NewsService newsService
     UsersService usersService
 
     def index() {
-        final String userId = SessionUtil.getUserId(session)
+        final String userId = SessionUtils.getUserId(session)
         final User user = userId ? findUserOrThrowNotFound(userId) : null
 
         final List<News> news = this.newsService.listAll()
@@ -22,7 +22,7 @@ class NewsController {
     }
 
     def read() {
-        final String userId = SessionUtil.getUserId(session)
+        final String userId = SessionUtils.getUserId(session)
         if (!userId) {
             render status: HttpStatus.ACCEPTED.code
         } else {
@@ -36,7 +36,7 @@ class NewsController {
 
             this.newsService.addReader(news, user)
 
-            render status: HttpStatus.ACCEPTED.code
+            redirect uri: '/'
         }
     }
 
