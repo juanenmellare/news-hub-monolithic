@@ -1,1 +1,1 @@
-web: java -jar build/libs/news-hub-monolithic-0.1.war
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/news-hub-monolithic-0.1.war
