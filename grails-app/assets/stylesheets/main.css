@@ -1,10 +1,10 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif !important;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     justify-content: space-between;
-    background-color: #333333;
+    background-color: #333333 !important;
 }
 
 .background__ub--primary {
