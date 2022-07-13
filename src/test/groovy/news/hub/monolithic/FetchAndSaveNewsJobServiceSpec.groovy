@@ -3,7 +3,6 @@ package news.hub.monolithic
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-
 class FetchAndSaveNewsJobServiceSpec extends Specification implements ServiceUnitTest<FetchAndSaveNewsJobService> {
 
     void "test execute"() {

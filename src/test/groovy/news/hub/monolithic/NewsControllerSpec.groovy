@@ -1,6 +1,5 @@
 package news.hub.monolithic
 
-import enums.HttpStatus
 import exceptions.BadRequestApiException
 import grails.testing.web.controllers.ControllerUnitTest
 import mocks.domains.NewsMockBuilder
@@ -79,18 +78,18 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
 
     void "test read, without userId"() {
         given:
-        request.method = 'POST'
+        request.method = 'PUT'
 
         when:
         controller.read()
 
         then:
-        response.status == HttpStatus.ACCEPTED.getCode()
+        response.redirectUrl == '/'
     }
 
     void "test read, with not persisted news"() {
         given:
-        request.method = 'POST'
+        request.method = 'PUT'
 
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
@@ -113,7 +112,7 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
 
     void "test read"() {
         given:
-        request.method = 'POST'
+        request.method = 'PUT'
 
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
