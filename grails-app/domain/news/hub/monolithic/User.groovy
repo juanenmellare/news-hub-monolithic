@@ -8,8 +8,8 @@ class User {
     String firstName
     String lastName
     String email
-    private String salt
-    private String password
+    String salt
+    String password
 
     static mapping = {
         table "users"
@@ -25,13 +25,5 @@ class User {
         this.email = email
         this.salt = PasswordUtils.generateSalt()
         this.password = PasswordUtils.hashPassword(password, this.salt)
-    }
-
-    String getSalt() {
-        return this.salt
-    }
-
-    String getPassword() {
-        return this.password
     }
 }
