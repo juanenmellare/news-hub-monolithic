@@ -1,6 +1,6 @@
 package utils
 
-class SessionUtil {
+class SessionUtils {
     final static String userIdKey = 'userId'
 
     static getUserId(session) {

@@ -7,7 +7,7 @@ import exceptions.NotFoundApiException
 import grails.testing.web.controllers.ControllerUnitTest
 import mocks.domains.UserMockBuilder
 import spock.lang.Specification
-import utils.SessionUtil
+import utils.SessionUtils
 
 class UsersControllerSpec extends Specification implements ControllerUnitTest<UsersController> {
 
@@ -87,7 +87,7 @@ class UsersControllerSpec extends Specification implements ControllerUnitTest<Us
 
     void "test logout"() {
         given:
-        SessionUtil.setUserId(session, 'foo-id')
+        SessionUtils.setUserId(session, 'foo-id')
 
         when:
         controller.logout()
@@ -95,7 +95,7 @@ class UsersControllerSpec extends Specification implements ControllerUnitTest<Us
         then:
         response.status == 302
         response.redirectUrl == '/'
-        SessionUtil.getUserId(session) == null
+        SessionUtils.getUserId(session) == null
     }
 
     void "test save"() {

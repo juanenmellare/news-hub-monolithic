@@ -27,15 +27,6 @@ class NewsService {
         return news
     }
 
-    @Transactional
-    void fetchAndSave() {
-        final List<News> news = this.getLastNewsFromChannels()
-        final List<News> newsAlreadySaved = News.findAllByUrlInList(news.url)
-        final List<News> unsavedNews = news.findAll{candidateNews -> !(candidateNews.url in newsAlreadySaved.url)}
-
-        News.saveAll(unsavedNews)
-    }
-
     List<News> listAll() {
         final List<News> news = News.findAll().sort { a, b -> b.publishedAt <=> a.publishedAt }
 
@@ -48,5 +39,14 @@ class NewsService {
             news.addToReaders(user)
             news.save()
         }
+    }
+
+
+    @Transactional
+    void fetchAndSave() {
+        final List<News> news = this.getLastNewsFromChannels()
+        final List<News> newsAlreadySaved = News.findAllByUrlInList(news.url)
+        final List<News> unsavedNews = news.findAll{candidateNews -> !(candidateNews.url in newsAlreadySaved.url)}
+        News.saveAll(unsavedNews)
     }
 }

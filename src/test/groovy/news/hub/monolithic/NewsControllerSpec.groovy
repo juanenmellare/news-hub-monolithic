@@ -8,7 +8,7 @@ import mocks.domains.UserMockBuilder
 import responses.NewsListResponse
 import responses.NewsResponse
 import spock.lang.Specification
-import utils.SessionUtil
+import utils.SessionUtils
 
 class NewsControllerSpec extends Specification implements ControllerUnitTest<NewsController> {
 
@@ -39,7 +39,7 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtil.setUserId(session, userId)
+        SessionUtils.setUserId(session, userId)
 
         controller.newsService = Mock(NewsService)
         final List<News> newsList = [new NewsMockBuilder().addReader(user).build()]
@@ -67,7 +67,7 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtil.setUserId(session, userId)
+        SessionUtils.setUserId(session, userId)
 
         when:
         controller.index()
@@ -95,7 +95,7 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtil.setUserId(session, userId)
+        SessionUtils.setUserId(session, userId)
 
         controller.newsService = Mock(NewsService)
         final News news = new NewsMockBuilder().build()
@@ -118,7 +118,7 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtil.setUserId(session, userId)
+        SessionUtils.setUserId(session, userId)
 
         controller.newsService = Mock(NewsService)
         final News news = new NewsMockBuilder().build()
@@ -131,6 +131,6 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         then:
         1 * controller.usersService.findById(userId) >> user
         1 * controller.newsService.findById(newsId) >> news
-        response.status == HttpStatus.ACCEPTED.getCode()
+        response.redirectUrl == '/'
     }
 }
