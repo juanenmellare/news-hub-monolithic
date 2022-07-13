@@ -23,18 +23,25 @@ class NewsController {
 
     def read() {
         final String userId = SessionUtils.getUserId(session)
-        if (userId) {
-            final User user = findUserOrThrowNotFound(userId)
-
-            final String newsId = params.id
-            final News news = this.newsService.findById(newsId)
-            if (!news) {
-                throw new BadRequestApiException()
-            }
-
-            this.newsService.addReader(news, user)
+        if (!userId) {
+            throw new BadRequestApiException()
         }
-        redirect uri: '/'
+
+        final User user = this.findUserOrThrowNotFound(userId)
+
+        final String newsId = params.id
+        final News news = this.newsService.findById(newsId)
+        if (!news) {
+            throw new BadRequestApiException()
+        }
+
+        this.newsService.addReader(news, user)
+
+        final HttpStatus httpStatus = HttpStatus.ACCEPTED
+        response.status = httpStatus.getCode()
+        render(contentType: "application/json") {[
+                'status': httpStatus.getStatus()
+        ]}
     }
 
     private User findUserOrThrowNotFound(String userId) throws BadRequestApiException {

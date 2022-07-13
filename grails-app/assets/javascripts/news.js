@@ -7,7 +7,12 @@ window.addEventListener("load", _ => {
     }
 });
 
-const openNewsInTab = (url) => {
+const readNews = (isRead, id, url) => {
     window.open(url, '_blank').focus();
-    return true;
+    if (isLogged && !isRead) {
+        const xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("PUT", `/news/read/${id}`, false);
+        xmlHttp.send(null);
+        document.location.reload();
+    }
 }
