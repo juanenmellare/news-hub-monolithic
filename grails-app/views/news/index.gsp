@@ -3,7 +3,6 @@
 <head>
     <meta name="layout" content="main"/>
     <title>Home</title>
-    <asset:stylesheet src="news.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
@@ -22,7 +21,7 @@
                         <div class="card-body card-body-news">
                             <asset:image src="/channels/${it.channel.name()}.png" height="12" class="card-channel-image"/>
                             <p class="card-news-datetime">
-                                <g:formatDate class="card-date" format="dd/MM/yyyy hh:mm" date="${it.publishedAt}"/>
+                                <g:formatDate class="card-date" format="dd/MM/yyyy HH:mm" date="${it.publishedAt}"/>
                             </p>
                         </div>
                     </a>
