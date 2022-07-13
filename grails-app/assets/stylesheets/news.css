@@ -1,0 +1,41 @@
+.container-card-news {
+    margin: 25px 0 !important;
+}
+
+.card-news {
+    margin: 10px 0 !important;
+}
+
+.card-news a {
+    font-weight: normal;
+    text-decoration: none;
+    color: black;
+}
+
+.card-header-news {
+    font-weight: 900;
+}
+
+.card-body-news {
+    padding: 0 15px !important;
+    margin: 10px 0;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-news-datetime {
+    margin: 0 0 -3px 5px;
+}
+
+.card-news-icon-read {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid black;
+    padding: 0 4px;
+    right: 5px;
+    top: 5px;
+    border-radius: 100px;
+    font-size: 20px;
+}
