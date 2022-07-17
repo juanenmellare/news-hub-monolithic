@@ -4,6 +4,7 @@ import enums.HttpStatus
 import exceptions.BadRequestApiException
 
 import responses.NewsListResponse
+import tokens.UserToken
 import utils.SessionUtils
 
 class NewsController {
@@ -11,8 +12,11 @@ class NewsController {
     UsersService usersService
 
     def index() {
-        final String userId = SessionUtils.getUserId(session)
-        final User user = userId ? findUserOrThrowNotFound(userId) : null
+        final String token = SessionUtils.getToken(session)
+        final UserToken userToken = new UserToken()
+        userToken.decode(token)
+
+        final User user = userToken.isVerified() ? findUserOrThrowNotFound(userToken.getUserId()) : null
 
         final List<News> news = this.newsService.listAll()
 
@@ -22,12 +26,14 @@ class NewsController {
     }
 
     def read() {
-        final String userId = SessionUtils.getUserId(session)
-        if (!userId) {
+        final String token = SessionUtils.getToken(session)
+        final UserToken userToken = new UserToken()
+        userToken.decode(token)
+        if (!userToken.isVerified()) {
             throw new BadRequestApiException()
         }
 
-        final User user = this.findUserOrThrowNotFound(userId)
+        final User user = this.findUserOrThrowNotFound(userToken.getUserId())
 
         final String newsId = params.id
         final News news = this.newsService.findById(newsId)
@@ -47,6 +53,7 @@ class NewsController {
     private User findUserOrThrowNotFound(String userId) throws BadRequestApiException {
         final User user = this.usersService.findById(userId)
         if (!user) {
+            session.invalidate()
             throw new BadRequestApiException()
         }
         return user
