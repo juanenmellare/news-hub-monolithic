@@ -61,6 +61,7 @@ dependencies {
     implementation "org.grails.plugins:gsp"
     implementation 'net.sourceforge.htmlunit:htmlunit:2.62.0'
     implementation 'org.postgresql:postgresql:42.2.10'
+    implementation 'com.auth0:java-jwt:4.0.0'
     profile "org.grails.profiles:web"
     runtimeOnly "org.glassfish.web:el-impl:2.2.1-b05"
     runtimeOnly "com.h2database:h2"

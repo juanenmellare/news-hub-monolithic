@@ -3,6 +3,7 @@ package news.hub.monolithic
 import exceptions.NotFoundApiException
 import requests.UserSignInRequest
 import requests.UserSignupRequest
+import tokens.UserToken
 import utils.SessionUtils
 
 class UsersController {
@@ -25,7 +26,8 @@ class UsersController {
             throw new NotFoundApiException("user with email ${userSignInRequest.getEmail()}")
         }
 
-        SessionUtils.setUserId(session, user.id)
+        final String token = new UserToken(user.id).encode()
+        SessionUtils.setToken(session, token)
 
         redirect uri: '/'
     }
@@ -43,6 +45,6 @@ class UsersController {
         final User userToSave = signUpSaveRequest.toUser()
         usersService.save(userToSave)
 
-        redirect uri: '/'
+        redirect uri: '/signIn'
     }
 }

@@ -30,7 +30,7 @@
     </g:each>
 </div>
 <g:javascript>
-    const isLogged = !!"${session.userId}" || false;
+    const isLogged = !!"${session.token}" || false;
 </g:javascript>
 <asset:javascript src="news.js"/>
 </body>
