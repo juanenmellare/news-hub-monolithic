@@ -34,7 +34,7 @@
                 <li class="nav-item">
                     <a class="nav-link navbar__items__link" aria-current="page" href="/">News</a>
                 </li>
-                <g:if test="${session.userId}">
+                <g:if test="${session.token}">
                     <li class="nav-item">
                         <g:link class="nav-link navbar__items__link" controller="users" action="logout">
                             Logout

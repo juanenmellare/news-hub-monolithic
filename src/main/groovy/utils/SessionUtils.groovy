@@ -1,13 +1,14 @@
 package utils
 
-class SessionUtils {
-    final static String userIdKey = 'userId'
 
-    static getUserId(session) {
-        return session[userIdKey]
+class SessionUtils {
+    final static String tokenKey = 'token'
+
+    static getToken(session) {
+        return session[tokenKey]
     }
 
-    static setUserId(session, String userId) {
-        return session[userIdKey] = userId
+    static setToken(session, String token) {
+        return session[tokenKey] = token
     }
 }

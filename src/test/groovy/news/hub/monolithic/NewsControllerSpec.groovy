@@ -8,6 +8,7 @@ import mocks.domains.UserMockBuilder
 import responses.NewsListResponse
 import responses.NewsResponse
 import spock.lang.Specification
+import tokens.UserToken
 import utils.SessionUtils
 
 class NewsControllerSpec extends Specification implements ControllerUnitTest<NewsController> {
@@ -39,7 +40,9 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtils.setUserId(session, userId)
+
+        final String token = new UserToken(userId).encode()
+        SessionUtils.setToken(session, token)
 
         controller.newsService = Mock(NewsService)
         final List<News> newsList = [new NewsMockBuilder().addReader(user).build()]
@@ -67,7 +70,9 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtils.setUserId(session, userId)
+
+        final String token = new UserToken(userId).encode()
+        SessionUtils.setToken(session, token)
 
         when:
         controller.index()
@@ -95,7 +100,9 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtils.setUserId(session, userId)
+
+        final String token = new UserToken(userId).encode()
+        SessionUtils.setToken(session, token)
 
         controller.newsService = Mock(NewsService)
         final News news = new NewsMockBuilder().build()
@@ -118,7 +125,9 @@ class NewsControllerSpec extends Specification implements ControllerUnitTest<New
         controller.usersService = Mock(UsersService)
         final User user = new UserMockBuilder().build()
         final String userId = user.id
-        SessionUtils.setUserId(session, userId)
+
+        final String token = new UserToken(userId).encode()
+        SessionUtils.setToken(session, token)
 
         controller.newsService = Mock(NewsService)
         final News news = new NewsMockBuilder().build()

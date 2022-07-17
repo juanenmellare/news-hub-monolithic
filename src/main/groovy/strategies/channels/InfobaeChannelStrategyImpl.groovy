@@ -36,7 +36,7 @@ class InfobaeChannelStrategyImpl extends ChannelStrategyImpl {
             final HtmlHeading2 h2 = anchor.getFirstByXPath(".//h2[@class='nd-feed-list-card-headline-lean']")
             final String title = h2.getTextContent()
             final Instant publishedAt = Instant.now()
-            final News news = new News(title, image.getSrc(), this.getChannel(), url, publishedAt)
+            final News news = new News(title, image.getSrc() ?: null, this.getChannel(), url, publishedAt)
 
             newsList.push(news)
         }

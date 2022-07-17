@@ -45,8 +45,7 @@ class UsersControllerSpec extends Specification implements ControllerUnitTest<Us
         then:
         response.status == 302
         response.redirectUrl == '/'
-        session['userId'] != null
-        session['userId'] == userMock.getId()
+        session['token'] != null
     }
 
     void "test authenticate, 400, missing fields"() {
@@ -87,7 +86,7 @@ class UsersControllerSpec extends Specification implements ControllerUnitTest<Us
 
     void "test logout"() {
         given:
-        SessionUtils.setUserId(session, 'foo-id')
+        SessionUtils.setToken(session, 'foo-token')
 
         when:
         controller.logout()
@@ -95,7 +94,7 @@ class UsersControllerSpec extends Specification implements ControllerUnitTest<Us
         then:
         response.status == 302
         response.redirectUrl == '/'
-        SessionUtils.getUserId(session) == null
+        SessionUtils.getToken(session) == null
     }
 
     void "test save"() {
@@ -114,7 +113,7 @@ class UsersControllerSpec extends Specification implements ControllerUnitTest<Us
 
         then:
         response.status == 302
-        response.redirectUrl == '/'
+        response.redirectUrl == '/signIn'
     }
 
     void "test save, 400, missing fields"() {
