@@ -71,12 +71,31 @@ class NewsServiceSpec extends Specification implements ServiceUnitTest<NewsServi
                 .setPublishedAt(now.minusSeconds(1)).save().build()
 
         when:
-        final List<News> newsFounded = newsService.listAll()
+        final List<News> newsFounded = newsService.listAll(1)
 
         then:
         newsFounded.size() == 2
         newsFounded[0].url == news2.url
         newsFounded[1].url == news.url
+    }
+
+    void "test getTotalPages"() {
+        given:
+        final NewsService newsService = Spy(NewsService)
+        newsToCreate.times {
+            new NewsMockBuilder().setUrl("www.news-foo${it}.com").save()
+        }
+
+        when:
+        final int totalPages = newsService.getTotalPages()
+
+        then:
+        totalPages == totalPagesExpected
+
+        where:
+        newsToCreate | totalPagesExpected
+        20           | 1
+        21           | 2
     }
 
     void "test addReader"() {

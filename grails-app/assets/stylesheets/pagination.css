@@ -1,0 +1,22 @@
+.news-pagination {
+    margin-top: 40px;
+}
+
+.news-pagination-dots {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.news-pagination-link {
+    color: black;
+}
+
+.news-pagination-link:hover {
+    color: #900126;
+}
+
+.news-pagination-link.active {
+    background-color: #900126 ;
+    border-color:  #900126 ;
+}
+
