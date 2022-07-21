@@ -114,7 +114,7 @@ environments:
         dataSource:
             url: jdbc:postgresql://localhost:5432/development.news-hub
             dbCreate: "update"
-            logSql: true
+            logSql: false
     test:
         dataSource:
             dbCreate: update

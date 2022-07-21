@@ -8,6 +8,7 @@ import groovyx.gpars.GParsPool
 
 @Service
 class NewsService {
+    private final int newsPerPage = 20
 
     News findById(String id) {
         News.findById(id)
@@ -27,10 +28,16 @@ class NewsService {
         return news
     }
 
-    List<News> listAll() {
-        final List<News> news = News.findAll().sort { a, b -> b.publishedAt <=> a.publishedAt }
+    List<News> listAll(int page) {
+        final int offset = (page - 1) * newsPerPage
+        final String sortField = 'publishedAt'
+        final String sortOrder = 'desc'
 
-        return news
+        return News.findAll([max: newsPerPage, offset: offset, sort: sortField, order: sortOrder])
+    }
+
+    int getTotalPages() {
+        return Math.ceil(News.count().intValue() / newsPerPage).intValue()
     }
 
     @Transactional
