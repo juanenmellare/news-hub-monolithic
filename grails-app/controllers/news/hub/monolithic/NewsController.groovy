@@ -18,9 +18,22 @@ class NewsController {
 
         final User user = userToken.isVerified() ? findUserOrThrowNotFound(userToken.getUserId()) : null
 
-        final List<News> news = this.newsService.listAll()
+        def pageParam = params.page
+        if (pageParam && !pageParam.toString().isInteger()) {
+            throw new BadRequestApiException("page param should be a positive number")
+        }
+        int currentPage = 1
+        if (pageParam) {
+            pageParam = params.page as int
+            if (pageParam > 0) {
+                currentPage = pageParam
+            }
+        }
 
-        final NewsListResponse newsListResponse = new NewsListResponse(news, user)
+        final List<News> news = this.newsService.listAll(currentPage)
+        final int totalPages = this.newsService.getTotalPages()
+
+        final NewsListResponse newsListResponse = new NewsListResponse(user, news, totalPages, currentPage)
 
         render view: "/news/index", model: newsListResponse.toMap()
     }
