@@ -3,7 +3,6 @@ package strategies.channels
 import com.gargoylesoftware.htmlunit.WebClient
 import enums.NewsChannel
 
-
 abstract class ChannelStrategyImpl implements ChannelStrategy {
     private WebClient webClient = new WebClient()
     private String baseUrl
