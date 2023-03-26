@@ -113,7 +113,9 @@ environments:
     development:
         dataSource:
             url: jdbc:postgresql://localhost:5432/development.news-hub
-            dbCreate: "update"
+            username: "postgres"
+            password: "belgrano"
+            dbCreate: "create-drop"
             logSql: false
     test:
         dataSource:

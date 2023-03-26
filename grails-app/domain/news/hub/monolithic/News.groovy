@@ -1,7 +1,6 @@
 package news.hub.monolithic
 
 import enums.NewsChannel
-
 import java.time.Instant
 
 class News {
@@ -15,6 +14,7 @@ class News {
     static hasMany = [readers: User]
 
     static mapping = {
+        version false
         readers joinTable: [name: "news_readers", key: "news_id"]
     }
 
