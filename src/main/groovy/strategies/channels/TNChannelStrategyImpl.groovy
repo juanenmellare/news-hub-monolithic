@@ -1,11 +1,6 @@
 package strategies.channels
 
-import com.gargoylesoftware.htmlunit.html.HtmlAnchor
-import com.gargoylesoftware.htmlunit.html.HtmlArticle
-import com.gargoylesoftware.htmlunit.html.HtmlHeading2
-import com.gargoylesoftware.htmlunit.html.HtmlImage
-import com.gargoylesoftware.htmlunit.html.HtmlPage
-import com.gargoylesoftware.htmlunit.html.HtmlTime
+import com.gargoylesoftware.htmlunit.html.*
 import enums.NewsChannel
 import news.hub.monolithic.News
 
